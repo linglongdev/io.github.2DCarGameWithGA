@@ -1,0 +1,52 @@
+From 42d5327bf67e2322968a723288a176214742f217 Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Thu, 19 Sep 2024 12:32:09 +0800
+Subject: [PATCH] install
+
+---
+ 2DCarGameWithGA.desktop | 11 +++++++++++
+ CMakeLists.txt          | 11 ++++++++++-
+ 2 files changed, 21 insertions(+), 1 deletion(-)
+ create mode 100644 2DCarGameWithGA.desktop
+
+diff --git a/2DCarGameWithGA.desktop b/2DCarGameWithGA.desktop
+new file mode 100644
+index 0000000..b293f5f
+--- /dev/null
++++ b/2DCarGameWithGA.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=2DCarGameWithGA
++Name=2DCarGameWithGA
++Name[zh_CN]=2DCarGameWithGA
++Icon=reward_gates
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=2DCarGameWithGA
++Version=1.0
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 746548e..2dbced8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -26,4 +26,13 @@ target_link_libraries(2DCarGameWithGA
+                         PUBLIC 
+                         Qt5::Core
+                         Qt5::Gui
+-                        Qt5::Widgets)
+\ No newline at end of file
++                        Qt5::Widgets)
++
++install(TARGETS ${PROJECT_NAME}
++             DESTINATION bin)
++
++install(FILES imgs/reward_gates.png
++        DESTINATION share/icons)
++
++install(FILES 2DCarGameWithGA.desktop
++            DESTINATION share/applications)
+\ No newline at end of file
+-- 
+2.43.4
+
