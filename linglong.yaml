@@ -1,0 +1,30 @@
+version: "1"
+
+package:
+  id: io.github.2DCarGameWithGA
+  name: 2DCarGameWithGA
+  version: 0.0.0.1
+  kind: app
+  description: |
+    2D car game in C++, where you can play against a genetic algorithm
+
+command:
+  - /opt/apps/io.github.2DCarGameWithGA/files/bin/2DCarGameWithGA
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/swordey/2DCarGameWithGA.git
+    version: master
+    commit: 7031d79302a1ed7be7b3c20f45702d84bb720c82
+
+build: |
+  cd /project/linglong/sources/2DCarGameWithGA.git
+  git apply ../../../0001-install.patch
+  mkdir -p build
+  cd build
+  cmake .. \
+        -DCMAKE_INSTALL_PREFIX=${PREFIX}
+  cmake --build . --target install -j$(nproc --all)
